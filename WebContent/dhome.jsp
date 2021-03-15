@@ -65,7 +65,7 @@
 		</header>
 		<!--content-->
 		<div class="container padBot"
-			style="height: 400px; background-image: url('img/login1.jpg')">
+			style="height: 400px; background-image: url('img/doc.jpg')">
 			<br>
 			<br>
 			<%

@@ -57,8 +57,7 @@
 
 						</article>
 
-						<br>
-						<br>
+						<br> <br>
 						<h1 style="margin-left: 10px" class="brand">
 							<a href=""></a>
 						</h1>
@@ -72,85 +71,18 @@
 					<div class="camera-caption fadeIn">
 						<p class="title1"><%@include file="title.jsp"%>
 						</p>
-						<br>
-						<a href="#">View More</a>
+						<br> <a href="#">View More</a>
 					</div>
 				</div>
 			</div>
 		</section>
 		<!--content-->
-		<section class="container padBot">
-			<div class="row">
-				<br>
-				<br>
-				<article class="span12">
-					<style>
-h4 {
-	color: cornflowerblue;
-}
-</style>
-					<div class="row">
-						<ul class="banners">
-							<li class="span3">
-								<figure>
-									<img src="img/software-bugs.jpg" alt="">
-								</figure>
-								<div>
-									<h4>Quality control</h4>
-									<p>QC is a procedure or set of procedures intended to
-										ensure that a manufactured product or performed service
-										adheres to a defined set of quality criteria or meets the
-										requirements of the client or customer.</p>
-									<a href="#" class="btn btn-primary">More</a>
-								</div>
-							</li>
-							<li class="span3">
-								<figure>
-									<img src="img/software-bugs2.png" alt="">
-								</figure>
-								<div>
-									<h4>Error Penetration</h4>
-									<p>A penetration test, or sometimes pentest, is a software
-										attack on a computer system that looks for security
-										weaknesses, potentially gaining access to the computer's
-										features and data.</p>
-									<a href="#" class="btn btn-primary">More</a>
-								</div>
-							</li>
-							<li class="span3">
-								<figure>
-									<img src="img/Performance-graph.jpg" alt="">
-								</figure>
-								<div>
-									<h4>Performance Review</h4>
-									<p>Performance Testing is usually the last resort to catch
-										application defects. It is labor intensive and usually only
-										catches coding defects.</p>
-									<a href="#" class="btn btn-primary">More</a>
-								</div>
-							</li>
-							<li class="span3">
-								<figure>
-									<img src="img/service-icon.jpg" alt="">
-								</figure>
-								<div>
-									<h4>Configuration</h4>
-									<p>Configuration management involves knowing the state of
-										all artifacts that make up your system or project, managing
-										the state of those artifacts, and releasing distinct versions
-										of a system.</p>
-									<a href="#" class="btn btn-primary">More</a>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</article>
-			</div>
-		</section>
+		
 		<div hidden class="met">
 			Web Development: <a class="cop" href="http://www.metamorphozis.com"></a>
 		</div>
 	</div>
+	<img alt="" src="img/blue-1.png" width = "100%" height = "100%">
 	<!--footer-->
 	<footer>
 		<div class="container">

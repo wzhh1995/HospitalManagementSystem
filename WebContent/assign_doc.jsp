@@ -100,7 +100,7 @@
 					String id = ar[0];
 					String sumy = ar[1];
 					String domain = ar[2];
-					String sql = "select * from doctor where domain='" + domain + "' and status='Activated'";
+					String sql = "select * from doctors where domain='" + domain + "' and status='Activated'";
 					Connection con = Dbcon.getCon();
 					Statement st = con.createStatement();
 					ResultSet rs = st.executeQuery(sql);

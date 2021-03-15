@@ -78,7 +78,7 @@
 		</header>
 		<!--content-->
 		<div class="container padBot"
-			style="height: 600px; background-image: url('img/afix.jpg')">
+			style="height: 600px; background-image: url('img/appointment.png')">
 			<br> <br>
 			<div class="row" style="margin-left: 20px">
 				<article class="span4" style="color: white;">
@@ -96,7 +96,7 @@
 
 				<article class="span8 about-box"
 					style="margin-left: 350px; margin-top: -200px">
-					<h5 style="margin-left: -30px">Appointment</h5>
+					<h5 style="margin-left: -30px;color: blue">Appointment</h5>
 
 					<form action="Appointment" method="post">
 						<fieldset>

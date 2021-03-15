@@ -91,7 +91,7 @@
 		<!--content-->
 
 		<div class="container"
-			style="background-image: url('img/devlog1.jpg'); height: 450px">
+			style="background-image: url('img/doctor1.jpg'); height: 450px">
 			<div class="row">
 
 				<article class="span8 form-box"

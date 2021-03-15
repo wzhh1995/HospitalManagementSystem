@@ -107,7 +107,7 @@
 						</tr>
 						<%
 							String id, name, mail, domain, cont, loc, jn, status = null;
-							String sql = "select * from docter";
+							String sql = "select * from doctors";
 							Connection con = Dbcon.getCon();
 							Statement st = con.createStatement();
 							ResultSet rs = st.executeQuery(sql);
