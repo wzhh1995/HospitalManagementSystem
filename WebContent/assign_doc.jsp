@@ -130,7 +130,7 @@
 							</div>
 							<div class="form-div-2">
 								<label>Department</label> <input type="text" value="<%=domain%>"
-									name="product"> <br>
+									name="department"> <br>
 							</div>
 							<div class="form-div-3">
 								<label>Assign Doctor</label> <select name="doc"

@@ -73,8 +73,7 @@
 		<!--content-->
 		<div class="container padBot"
 			style="height: 800px; background-image: url('img/bgall2.jpg')">
-			<br>
-			<br>
+			<br> <br>
 
 			<div class="row">
 				<article class="span4" style="color: white; margin-left: 50px">
@@ -90,7 +89,8 @@
 					</ol>
 				</article>
 				<article class="span8 about-box" style="">
-					<h5 style="color: white; margin-top: -150px; margin-left: 475px">Trace History of Patients</h5>
+					<h5 style="color: white; margin-top: -150px; margin-left: 475px">Trace
+						History of Patients</h5>
 
 					<table style="margin-left: 260px; width: 800px;">
 						<tr
@@ -102,23 +102,23 @@
 							<td style="text-align: center;">Summary</td>
 						</tr>
 						<%
-							String id, dat, dev, sts, su = null;
+							String id, dat, doc, sts, su = null;
 							String sql = "select * from hist";
 							Connection con = Dbcon.getCon();
 							Statement st = con.createStatement();
 							ResultSet rs = st.executeQuery(sql);
 							while (rs.next()) {
 								id = rs.getString("id");
-								dat = rs.getString("dat");
-								dev = rs.getString("dev");
+								dat = rs.getString("cdate");
+								doc = rs.getString("doctor");
 								sts = rs.getString("status");
-								su = rs.getString("summary");
+								su = rs.getString("summ");
 						%>
 						<tr
 							style="border: solid 1px; font-size: 15px; color: white; font-family: monospace; font-weight: bold;">
 							<td style="height: 20px; text-align: center" width='10%'><%=id%></td>
 							<td style="text-align: center" width='10%'><%=dat%></td>
-							<td style="text-align: center;" width='22%'><%=dev%></td>
+							<td style="text-align: center;" width='22%'><%=doc%></td>
 							<td style="text-align: center;" width='12%'><%=sts%></td>
 							<td style="text-align: center;" width='12%'><%=su%></td>
 						</tr>

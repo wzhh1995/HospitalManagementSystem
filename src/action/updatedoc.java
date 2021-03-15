@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author java1
  */
-public class updatedev extends HttpServlet {
+public class updatedoc extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,9 +42,9 @@ public class updatedev extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             
             String id = request.getParameter("id");
-            String dev = request.getParameter("dev");
+            String dev = request.getParameter("doc");
             String sum = request.getParameter("sum");
-            String rec = request.getParameter("status");
+            //String rec = request.getParameter("status");
 //             Calendar cal = Calendar.getInstance();
 //		SimpleDateFormat format = new SimpleDateFormat("HH:mm dd/MM/yyyy");
 //		String report= format.format(cal.getTime());

@@ -1,12 +1,12 @@
+<%@page import="action.Dbcon"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
-<%@page import="action.Dbcon"%>
 <%@page import="java.sql.Connection"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<title>PATIENT-STATUS</title>
+<title>PatientStatus</title>
 <meta charset="utf-8">
 
 <meta name="description" content="Your description">
@@ -61,7 +61,6 @@
 								<h1 class="brand"
 									style="margin-left: -30px; color: white; font-size: 30px"><%@include
 										file="title.jsp"%>
-									A Ranking Model,
 								</h1>
 							</center>
 						</article>
@@ -71,8 +70,9 @@
 		</header>
 		<!--content-->
 		<div class="container padBot"
-			style="height: 400px; background-image: url('img/bgall2.jpg')">
-			<br> <br>
+			style="height: 800px; background-image: url('img/bgall2.jpg')">
+			<br>
+			<br>
 			<div class="row">
 				<article class="span4" style="color: white">
 					<h5 style="color: white;">Actions</h5>
@@ -81,8 +81,7 @@
 							href="ahome.jsp">Home</a></li>
 						<li><a style="font-size: 20px" href="approve.jsp">Recruit
 								Doctor</a></li>
-						<li><a style="font-size: 20px" href="feature1.jsp">Distribute
-								Task</a></li>
+						<li><a style="font-size: 20px" href="feature1.jsp">Distribute Task</a></li>
 						<li><a style="font-size: 20px" href="trace.jsp">Trace
 								History</a></li>
 						<li><a style="font-size: 20px" href="history1.jsp">PATIENT_STATUS</a></li>
@@ -90,19 +89,50 @@
 					</ol>
 				</article>
 				<article class="span8 about-box">
-					<h5 style="color: white; margin-top: 10px; margin-left: -80px">CHECKING
-						PATIENTS STATUS</h5>
-					<form action="history2.jsp" method="post">
-						<select name="status" style="margin-top: 0px;">
-							<option value="-1">Select Status</option>
-							<option value="Cure">Cure</option>
-							<option value="NotCure">Not Cure</option>
-							<option value="Pending">Pending</option>
-						</select><br> <input
-							style="margin-left: 50px; border-radius: 3px; width: 120px"
-							type="submit" value="Check">
-					</form>
+					<h5 style="color: white; margin-top: 10px; margin-left: -50px">Patients Reduction based on Selection</h5>
+					<table style="margin-left: -210px; width: 1000px">
+						<tr
+							style="border: solid 1px; font-size: 20px; color: burlywood; font-family: monospace; font-weight: bold;">
+							<td style="text-align: center; height: 40px">PATIENTID</td>
+							<td style="text-align: center;">NAME</td>
+							<td style="text-align: center;">GENDER</td>
+							<td style="text-align: center;">ASSINGDATE</td>
+							<td style="text-align: center;">DOCTOR</td>
+							<td style="text-align: center;">CUREDDATE</td>
+							<td style="text-align: center;">TREATMENT</td>
+						</tr>
+						<%
+							String id, name, gender, adate, doc, cdate, treatment = null;
+							String status = request.getParameter("status");
+							String sql = "select * from patients where status = '" + status + "' ";
+							Connection con = Dbcon.getCon();
+							Statement st = con.createStatement();
+							ResultSet rs = st.executeQuery(sql);
+							while (rs.next()) {
+								id = rs.getString("id");
+								name = rs.getString("name");
+								gender = rs.getString("gender");
+								adate = rs.getString("adate");
+								doc = rs.getString("doctor");
+								cdate = rs.getString("cdate");
+								treatment = rs.getString("treatment");
+						%>
+						<tr
+							style="border: solid 1px; font-size: 15px; color: white; font-family: monospace; font-weight: bold;">
+							<td style="height: 20px; text-align: center"><%=id%></td>
+							<td style="text-align: center" width='10%'><%=name%></td>
+							<td style="text-align: center;" width='-2%'><%=gender%></td>
+							<td style="text-align: center;" width='12%'><%=adate%></td>
+							<td style="text-align: center;" width='12%'><%=doc%></td>
+							<td style="text-align: center;" width='12%'><%=cdate%></td>
+							<td style="text-align: center;" width='12%'><textarea
+									readonly><%=treatment%></textarea></td>
 
+						</tr>
+						<%
+							}
+						%>
+					</table>
 
 				</article>
 			</div>
@@ -120,11 +150,11 @@
 					<div class="row">
 						<nav class="span6">
 							<!--                        <ul>
-                            <li class="active"><a href="thome.jsp">Home</a></li>
+                            <li><a href="thome.jsp">Home</a></li>
                             <li><a href="affix.jsp">Affix New Bug</a></li>
                             <li><a href="buganalyse.jsp">Analyse Bug Report</a></li>
                             <li><a href="feature1.jsp">Data Reduction FS</a></li>
-                            <li><a href="ired.jsp">Data Reduction IS</a></li>
+                            <li class="active"><a href="ired.jsp">Data Reduction IS</a></li>
                             <li><a href="index.jsp">Logout</a></li>
                         </ul>-->
 						</nav>

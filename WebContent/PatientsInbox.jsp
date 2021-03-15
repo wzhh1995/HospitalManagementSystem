@@ -111,7 +111,7 @@
 								id = rs.getString("id");
 								summary = rs.getString("summ");
 								dec = rs.getString("des");
-								dev = rs.getString("doctor");
+								//dev = rs.getString("doctor");
 								name = rs.getString("name");
 								dep = rs.getString("dept");
 								imp = rs.getString("imp");
