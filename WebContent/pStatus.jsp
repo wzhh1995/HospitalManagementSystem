@@ -47,7 +47,7 @@
 									<div class="clearfix">
 										<div class="nav-collapse nav-collapse_">
 											<ul class="nav sf-menu clearfix">
-												<li class="active"><a href="thome.jsp">Home</a></li>
+												<li class="active"><a href="dhome.jsp">Home</a></li>
 												<li><a href="PatientsInbox.jsp">Patients Inbox</a></li>
 												<li><a href="pStatus.jsp">Patient Status</a></li>
 												<li><a href="index.jsp">Logout</a></li>

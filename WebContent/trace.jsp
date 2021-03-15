@@ -97,7 +97,7 @@
 							style="border: solid 1px; font-size: 20px; color: white; font-family: monospace; font-weight: bold;">
 							<td style="text-align: center; height: 40px">Id</td>
 							<td style="text-align: center;">Date</td>
-							<td style="text-align: center;">Triager</td>
+							<td style="text-align: center;">Doctor</td>
 							<td style="text-align: center;">Action</td>
 							<td style="text-align: center;">Summary</td>
 						</tr>

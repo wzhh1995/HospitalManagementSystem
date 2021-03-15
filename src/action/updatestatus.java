@@ -40,33 +40,33 @@ public class updatestatus extends HttpServlet {
         PrintWriter out = response.getWriter();
         try{
             
-                HttpSession ses = request.getSession(true);
-                String user = ses.getAttribute("UID").toString();
+            HttpSession ses = request.getSession(true);
+            String user = ses.getAttribute("UID").toString();
             
             /* TODO output your page here. You may use following sample code.*/
             String id = request.getParameter("id");
             String sts = request.getParameter("status");
             String sum = request.getParameter("sum");
-            String soluction = request.getParameter("soluction");
+            String solution = request.getParameter("solution");
                        
-             Calendar cal = Calendar.getInstance();
-		SimpleDateFormat format = new SimpleDateFormat("HH:mm dd/MM/yyyy");
-		String report= format.format(cal.getTime());
+            Calendar cal = Calendar.getInstance();
+		    SimpleDateFormat format = new SimpleDateFormat("HH:mm MM/dd/yyyy");
+		    String report= format.format(cal.getTime());
             HttpSession sess = request.getSession();
-            String develop = ses.getAttribute("unames").toString();
-            
-            
-            String sql = "update bug set status ='"+sts+"',finalstatus ='"+sts+"',develop ='"+develop+"',cdate='"+report+"',soluction='"+soluction+"' where id = '"+id+"'";
-            String sql1 = "insert into hist (id, dev, status, summary) values ('"+id+"','"+user+"','"+sts+"','"+sum+"')";
+            String doctor = ses.getAttribute("unames").toString();
+
+            String sql = "update patients set status ='"+sts+"',doctor ='"+ doctor +"',cdate='"+report+"',treatment='"+solution+"' where id = '"+id+"'";
+            String sql1 = "update hist set status ='"+sts+"',cdate='"+report+"' where id = '"+id+"'";
+            //String sql1 = "insert into hist (id, doctor, status, summ) values ('"+id+"','"+user+"','"+sts+"','"+sum+"')";
             Connection con = Dbcon.getCon();
             Statement st = con.createStatement();
             Statement st1 = con.createStatement();
             int i = st.executeUpdate(sql);
             int i1 = st1.executeUpdate(sql1);
-            if(i!=0){
-                response.sendRedirect("Bug_Tkt.jsp?Status_Updated");
+            if(i!= 0 && i1 != 0){
+                response.sendRedirect("PatientsInbox.jsp?Status_Updated");
             }else{
-                response.sendRedirect("Bug_Tkt.jsp?Try_Again");
+                response.sendRedirect("PatientsInbox.jsp?Try_Again");
             }
         }
         catch(Exception e){

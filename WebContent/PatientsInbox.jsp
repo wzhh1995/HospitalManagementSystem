@@ -46,7 +46,7 @@
 									<div class="clearfix">
 										<div class="nav-collapse nav-collapse_">
 											<ul class="nav sf-menu clearfix">
-												<li class="active"><a href="thome.jsp">Home</a></li>
+												<li class="active"><a href="dhome.jsp">Home</a></li>
 												<li><a href="PatientsInbox.jsp">Patients Inbox</a></li>
 												<li><a href="pStatus.jsp">Patient Status</a></li>
 												<li><a href="index.jsp">Logout</a></li>
@@ -96,7 +96,6 @@
 							<td style="text-align: center;">Patient-name</td>
 							<td style="text-align: center;">Summary</td>
 							<td style="text-align: center;">Description</td>
-							<td style="text-align: center;">Department</td>
 							<td style="text-align: center;">Critical</td>
 							<td style="text-align: center;">Status</td>
 							<td style="text-align: center;">Triage</td>
@@ -119,13 +118,12 @@
 						%>
 						<tr
 							style="border: solid 1px; font-size: 15px; color: white; font-family: monospace; font-weight: bold;">
-							<td style="height: 20px; text-align: center"><%=id%></td>
-							<td style="text-align: center;" width='12%'><%=name%></td>
+							<td style="height: 20px; text-align: center" width='10%'><%=id%></td>
+							<td style="text-align: center;" width='10%'><%=name%></td>
 							<td style="text-align: center" width='10%'><%=summary%></td>
-							<td style="text-align: center;" width='-2%'><textarea><%=dec%></textarea></td>
-							<td style="text-align: center;" width='12%'><%=dep%></td>
-							<td style="text-align: center;" width='12%'><%=imp%></td>
-							<td style="text-align: center;" width='12%'><%=action%></td>
+							<td style="text-align: center;" width='10%'><textarea><%=dec%></textarea></td>
+							<td style="text-align: center;" width='10%'><%=imp%></td>
+							<td style="text-align: center;" width='10%'><%=action%></td>
 							<td style="text-align: center;"><a style="color: white"
 								href="Treat.jsp?<%=id%>,<%=summary%>,<%=dep%>">Update</a></td>
 						</tr>

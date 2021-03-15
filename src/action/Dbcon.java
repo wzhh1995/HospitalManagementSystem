@@ -18,8 +18,8 @@ public class Dbcon {
         
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/triage", "root", "root");
-            System.out.println("Connection Established"+con);
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital", "root", "950406");
+            System.out.println("Connection Established" + con);
             
         } catch (Exception e) {
             e.printStackTrace();

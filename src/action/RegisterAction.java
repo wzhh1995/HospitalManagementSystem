@@ -35,7 +35,7 @@ public class RegisterAction extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             String name = request.getParameter("name");
-            System.out.println("nmae:" + name);
+            System.out.println("name:" + name);
             String pass = request.getParameter("pass");
             String Day = request.getParameter("date");
             System.out.println("date" + Day);
@@ -45,7 +45,7 @@ public class RegisterAction extends HttpServlet {
             String domain = request.getParameter("domain");
             Connection con = Dbcon.getCon();
             Statement st = con.createStatement();
-            String insertQuery = "insert into user(name, pass, jdt, email, domain, phone, loc) values('" + name + "','" + pass + "','" + Day + "','" + mail + "','" + domain + "','" + mobile + "','" + place + "')";
+            String insertQuery = "insert into doctors(name, pass, jdt, email, domain, phone, loc) values('" + name + "','" + pass + "','" + Day + "','" + mail + "','" + domain + "','" + mobile + "','" + place + "')";
 
             int i = st.executeUpdate(insertQuery);
 

@@ -95,8 +95,8 @@
 					<form action="history2.jsp" method="post">
 						<select name="status" style="margin-top: 0px;">
 							<option value="-1">Select Status</option>
-							<option value="Cure">Cure</option>
-							<option value="NotCure">Not Cure</option>
+							<option value="Cured">Cured</option>
+							<option value="NotCured">Not Cured</option>
 							<option value="Pending">Pending</option>
 						</select><br> <input
 							style="margin-left: 50px; border-radius: 3px; width: 120px"

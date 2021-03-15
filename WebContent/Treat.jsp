@@ -6,7 +6,7 @@
 <html lang="en">
 
 <head>
-<title>Rectify</title>
+<title>Treat</title>
 <meta charset="utf-8">
 <meta name="description" content="Your description">
 <meta name="keywords" content="Your keywords">
@@ -47,7 +47,7 @@
 									<div class="clearfix">
 										<div class="nav-collapse nav-collapse_">
 											<ul class="nav sf-menu clearfix">
-												<li class="active"><a href="thome.jsp">Home</a></li>
+												<li class="active"><a href="dhome.jsp">Home</a></li>
 												<li><a href="PatientsInbox.jsp">Patients Inbox</a></li>
 												<li><a href="pStatus.jsp">Patient Status</a></li>
 												<li><a href="index.jsp">Logout</a></li>
@@ -103,7 +103,7 @@
 
 				<article class="span8 about-box"
 					style="margin-left: 450px; margin-top: -200px">
-					<h5 style="margin-left: -25px">Rectification Status</h5>
+					<h5 style="margin-left: -25px">Treatment Status</h5>
 
 					<form action="updatestatus" method="post">
 						<fieldset>

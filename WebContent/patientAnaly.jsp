@@ -95,24 +95,22 @@
 						<table style="width: 1000px;">
 							<tr
 								style="border: solid 1px; font-size: 20px; color: burlywood; font-family: monospace; font-weight: bold;">
-								<td style="text-align: center; height: 40px">BugId</td>
-								<td style="text-align: center; height: 40px">comp</td>
+								<td style="text-align: center; height: 40px">Id</td>
+								<td style="text-align: center; height: 40px">Name</td>
+								<td style="text-align: center;">Age</td>
+								<td style="text-align: center;">Gender</td>
 								<td style="text-align: center;">Summary</td>
 								<td style="text-align: center;">Description</td>
-								<td style="text-align: center;">Platform</td>
-								<td style="text-align: center;">Product</td>
 								<td style="text-align: center;">Critical</td>
-								<td style="text-align: center;">Devloper</td>
 								<td style="text-align: center;">Action</td>
 								<td style="text-align: center;">date</td>
-								<td style="text-align: center;">Triage</td>
 							</tr>
 
 							<%
 								String domain = request.getParameter("domain");
 								String id, name, age, gender, summary, dec, imp, adate, action = null;
 								//String sql = "select * from bug where product='"+fs+"'";
-								String sql = "SELECT  * from patients where dept = '" + domain + "' ";
+								String sql = "SELECT  * from patients where dept = '" + domain + "' and status = 'Pending'";
 								Connection con = Dbcon.getCon();
 								Statement st = con.createStatement();
 								ResultSet rs = st.executeQuery(sql);

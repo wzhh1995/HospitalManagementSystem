@@ -48,13 +48,13 @@ public class dlogin extends HttpServlet {
             HttpSession ses = request.getSession();
             Connection con = Dbcon.getCon();
             Statement st = con.createStatement();
-            String sql = "select * from user where name='" + name + "'";
+            String sql = "select * from doctors where name='" + name + "'";
             ResultSet rs = st.executeQuery(sql);
             if (rs.next()) {
 
                 if (pass.equals(rs.getString("pass")) && dom.equals(rs.getString("domain"))) {
                     ses.setAttribute("UID", name);
-                    String unames=rs.getString("name");
+                    String unames = rs.getString("name");
                     ses.setAttribute("unames", unames);
                     response.sendRedirect("dhome.jsp?Login_Success");
                 } else {

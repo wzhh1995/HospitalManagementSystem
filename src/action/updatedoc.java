@@ -42,28 +42,28 @@ public class updatedoc extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             
             String id = request.getParameter("id");
-            String dev = request.getParameter("doc");
+            String doc = request.getParameter("doc");
             String sum = request.getParameter("sum");
             //String rec = request.getParameter("status");
-//             Calendar cal = Calendar.getInstance();
-//		SimpleDateFormat format = new SimpleDateFormat("HH:mm dd/MM/yyyy");
-//		String report= format.format(cal.getTime());
-//            HttpSession ses = request.getSession();
+//          Calendar cal = Calendar.getInstance();
+//		    SimpleDateFormat format = new SimpleDateFormat("HH:mm dd/MM/yyyy");
+//		    String report= format.format(cal.getTime());
+//          HttpSession ses = request.getSession();
 //            
-//            String develop = ses.getAttribute("unames").toString();
+//          String develop = ses.getAttribute("unames").toString();
             
             
-            String sql = "update bug set dev='"+dev+"' , status ='Assigned' where id = '"+id+"'";
-            String sql1 = "insert into hist (id, dev, status, summary) values ('"+id+"','"+dev+"','Assigned','"+sum+"')";
+            String sql = "update patients set doctor='"+doc+"' , status ='Assigned' where id = '"+id+"'";
+            String sql1 = "insert into hist (id, doctor, status, summ) values ('"+id+"','"+doc+"','Assigned','"+sum+"')";
             Connection con = Dbcon.getCon();
             Statement st = con.createStatement();
             int i = st.executeUpdate(sql);
             Statement st1 = con.createStatement();
             int i1 = st1.executeUpdate(sql1);
-            if(i!=0){
-                response.sendRedirect("buganalyse.jsp?Devloper_Assigned");
+            if(i != 0 && i1 != 0){
+                response.sendRedirect("patientAnaly.jsp?Devloper_Assigned");
             }else{
-                response.sendRedirect("buganalyse.jsp?Pls_Check");
+                response.sendRedirect("patientAnaly.jsp?Pls_Check");
             }
         }
         

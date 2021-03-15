@@ -8,7 +8,7 @@
 	try {
 
 		String id = request.getQueryString();
-		String sql = "update doctor set status = 'Activated' where id='" + id + "'";
+		String sql = "update doctors set status = 'Activated' where id='" + id + "'";
 	
 		Connection con = Dbcon.getCon();
 		Statement st = con.createStatement();
