@@ -4,8 +4,9 @@
 <%@page import="java.sql.Connection"%>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<title>Manager</title>
+<title>Patient Status</title>
 <meta charset="utf-8">
 
 <meta name="description" content="Your description">
@@ -33,7 +34,6 @@
 		$('.thumb-pad5 figure a').touchTouch();
 	});
 </script>
-
 </head>
 <body>
 	<div class="global">
@@ -47,12 +47,9 @@
 									<div class="clearfix">
 										<div class="nav-collapse nav-collapse_">
 											<ul class="nav sf-menu clearfix">
-												<li><a href="ahome.jsp">Home</a></li>
-												<li><a href="approve.jsp">Recruit Doctor</a></li>
-												<li class="active"><a href="trace.jsp">Trace
-														History</a></li>
-												<li class="active"><a href="history1.jsp">Patient
-														Status</a></li>
+												<li class="active"><a href="thome.jsp">Home</a></li>
+												<li><a href="PatientsInbox.jsp">Patients Inbox</a></li>
+												<li><a href="pStatus.jsp">Patient Status</a></li>
 												<li><a href="index.jsp">Logout</a></li>
 											</ul>
 										</div>
@@ -75,52 +72,62 @@
 			style="height: 800px; background-image: url('img/bgall2.jpg')">
 			<br>
 			<br>
-
 			<div class="row">
-				<article class="span4" style="color: white; margin-left: 50px">
+				<article class="span4" style="color: white">
+					<h5 style="color: white;">Actions</h5>
 					<ol class="list1">
-						<li class="active"><a style="font-size: 20px"
-							href="ahome.jsp">Home</a></li>
-						<li><a style="font-size: 20px" href="approve.jsp">Recruit
-								Doctor</a></li>
-						<li><a style="font-size: 20px" href="trace.jsp">Trace
-								History</a></li>
-						<li><a style="font-size: 20px" href="history1.jsp">PATIENT_STATUS</a></li>
+						<li><a style="font-size: 20px" href="dhome.jsp">Home</a></li>
+						<li><a style="font-size: 20px" href="PatientsInbox.jsp">Patients Inbox</a></li>
+						<li><a style="font-size: 20px" href="pStatus.jsp">Patient Status</a></li>
 						<li><a style="font-size: 20px" href="index.jsp">Logout</a></li>
 					</ol>
 				</article>
-				<article class="span8 about-box" style="">
-					<h5 style="color: white; margin-top: -150px; margin-left: 475px">Trace History of Patients</h5>
-
-					<table style="margin-left: 260px; width: 800px;">
+				<article class="span8 about-box">
+					<h5 style="color: white; margin-top: 10px; margin-left: -50px">Cured
+						Patients</h5>
+					<table style="margin-left: -210px; width: 1000px">
 						<tr
-							style="border: solid 1px; font-size: 20px; color: white; font-family: monospace; font-weight: bold;">
-							<td style="text-align: center; height: 40px">Id</td>
-							<td style="text-align: center;">Date</td>
-							<td style="text-align: center;">Triager</td>
-							<td style="text-align: center;">Action</td>
-							<td style="text-align: center;">Summary</td>
+							style="border: solid 1px; font-size: 20px; color: burlywood; font-family: monospace; font-weight: bold;">
+							<td style="text-align: center; height: 40px">PatientId</td>
+							<td style="text-align: center;">NAME</td>
+							<td style="text-align: center;">AGE</td>
+							<td style="text-align: center;">GENDER</td>
+							<td style="text-align: center;">ASSIGNED_DATE</td>
+							<td style="text-align: center;">DOCTOR</td>
+							<td style="text-align: center;">CURE_DATE</td>
+							<td style="text-align: center;">TREATMENT METHOD</td>
 						</tr>
 						<%
-							String id, dat, dev, sts, su = null;
-							String sql = "select * from hist";
+							String id, name, gender, doctor, adate, cdate,treatment, age = null;
+							//String status = request.getParameter("status");
+							HttpSession sess = request.getSession();
+							String docName = sess.getAttribute("unames").toString();
+							String sql = "select * from patients where status = 'Cured' and doctor='" + docName + "' ";
 							Connection con = Dbcon.getCon();
 							Statement st = con.createStatement();
 							ResultSet rs = st.executeQuery(sql);
 							while (rs.next()) {
 								id = rs.getString("id");
-								dat = rs.getString("dat");
-								dev = rs.getString("dev");
-								sts = rs.getString("status");
-								su = rs.getString("summary");
+								name = rs.getString("name");
+								age = rs.getString("age");
+								gender = rs.getString("gender");
+								adate = rs.getString("adate");
+								doctor = rs.getString("doctor");
+								cdate = rs.getString("cdate");
+								treatment = rs.getString("treatment");
 						%>
 						<tr
 							style="border: solid 1px; font-size: 15px; color: white; font-family: monospace; font-weight: bold;">
-							<td style="height: 20px; text-align: center" width='10%'><%=id%></td>
-							<td style="text-align: center" width='10%'><%=dat%></td>
-							<td style="text-align: center;" width='22%'><%=dev%></td>
-							<td style="text-align: center;" width='12%'><%=sts%></td>
-							<td style="text-align: center;" width='12%'><%=su%></td>
+							<td style="height: 20px; text-align: center"><%=id%></td>
+							<td style="text-align: center" width='10%'><%=name%></td>
+							<td style="text-align: center;" width='-2%'><%=age%></td>
+							<td style="text-align: center;" width='-2%'><%=gender%></td>
+							<td style="text-align: center;" width='12%'><%=adate%></td>
+							<td style="text-align: center;" width='12%'><%=doctor%></td>
+							<td style="text-align: center;" width='12%'><%=cdate%></td>
+							<td style="text-align: center;" width='12%'><textarea
+									readonly><%=treatment%></textarea></td>
+
 						</tr>
 						<%
 							}
@@ -142,16 +149,17 @@
 				<article class="span12">
 					<div class="row">
 						<nav class="span6">
-							<!--                                <ul>
-                                    <li><a href="index.html">home</a></li>
-                                    <li class="active"><a href="about.html">about us</a></li>
-                                    <li><a href="products.html">products</a></li>
-                                    <li><a href="services.html">services</a></li>
-                                    <li><a href="contact.html">contacts</a></li>
-                                </ul>-->
+							<!--                        <ul>
+                            <li><a href="thome.jsp">Home</a></li>
+                            <li><a href="affix.jsp">Affix New Bug</a></li>
+                            <li><a href="buganalyse.jsp">Analyse Bug Report</a></li>
+                            <li><a href="feature1.jsp">Data Reduction FS</a></li>
+                            <li class="active"><a href="ired.jsp">Data Reduction IS</a></li>
+                            <li><a href="index.jsp">Logout</a></li>
+                        </ul>-->
 						</nav>
 						<div class="span3 offset3">
-							<p>Company Name Here & copy; 2014 & bull;</p>
+							<!--                        <p>Company Name Here & copy; 2014 &bull; </p>-->
 						</div>
 					</div>
 				</article>

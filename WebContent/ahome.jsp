@@ -77,7 +77,7 @@
 						<li class="active"><a style="font-size: 20px"
 							href="ahome.jsp">Home</a></li>
 						<li><a style="font-size: 20px" href="approve.jsp">Recruit
-								Developer</a></li>
+								Doctor</a></li>
 						<li><a style="font-size: 20px" href="feature1.jsp">Distribute Task</a></li>
 						<li><a style="font-size: 20px" href="trace.jsp">Trace
 								History</a></li>

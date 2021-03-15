@@ -1,13 +1,9 @@
-<%@page import="action.Dbcon"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.Connection"%>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Manager</title>
-<meta charset="utf-8">
 
+<head>
+<title>Doctor Home</title>
+<meta charset="utf-8">
 <meta name="description" content="Your description">
 <meta name="keywords" content="Your keywords">
 <meta name="author" content="Your name">
@@ -47,12 +43,9 @@
 									<div class="clearfix">
 										<div class="nav-collapse nav-collapse_">
 											<ul class="nav sf-menu clearfix">
-												<li><a href="ahome.jsp">Home</a></li>
-												<li><a href="approve.jsp">Recruit Doctor</a></li>
-												<li class="active"><a href="trace.jsp">Trace
-														History</a></li>
-												<li class="active"><a href="history1.jsp">Patient
-														Status</a></li>
+												<li class="active"><a href="thome.jsp">Home</a></li>
+												<li><a href="PatientsInbox.jsp">Patients Inbox</a></li>
+												<li><a href="pStatus.jsp">Patient Status</a></li>
 												<li><a href="index.jsp">Logout</a></li>
 											</ul>
 										</div>
@@ -72,61 +65,27 @@
 		</header>
 		<!--content-->
 		<div class="container padBot"
-			style="height: 800px; background-image: url('img/bgall2.jpg')">
+			style="height: 400px; background-image: url('img/login1.jpg')">
 			<br>
 			<br>
-
+			<%
+				HttpSession ses = request.getSession(true);
+			    String user = ses.getAttribute("UID").toString();
+			%>
 			<div class="row">
 				<article class="span4" style="color: white; margin-left: 50px">
+					<h5 style="color: darkblue;">Actions</h5>
 					<ol class="list1">
-						<li class="active"><a style="font-size: 20px"
-							href="ahome.jsp">Home</a></li>
-						<li><a style="font-size: 20px" href="approve.jsp">Recruit
-								Doctor</a></li>
-						<li><a style="font-size: 20px" href="trace.jsp">Trace
-								History</a></li>
-						<li><a style="font-size: 20px" href="history1.jsp">PATIENT_STATUS</a></li>
+						<li><a style="font-size: 20px" href="dhome.jsp">Home</a></li>
+						<li><a style="font-size: 20px" href="PatientsInbox.jsp">Patients Inbox</a></li>
+						<li><a style="font-size: 20px" href="pStatus.jsp">Patient Status</a></li>
 						<li><a style="font-size: 20px" href="index.jsp">Logout</a></li>
 					</ol>
 				</article>
 				<article class="span8 about-box" style="">
-					<h5 style="color: white; margin-top: -150px; margin-left: 475px">Trace History of Patients</h5>
-
-					<table style="margin-left: 260px; width: 800px;">
-						<tr
-							style="border: solid 1px; font-size: 20px; color: white; font-family: monospace; font-weight: bold;">
-							<td style="text-align: center; height: 40px">Id</td>
-							<td style="text-align: center;">Date</td>
-							<td style="text-align: center;">Triager</td>
-							<td style="text-align: center;">Action</td>
-							<td style="text-align: center;">Summary</td>
-						</tr>
-						<%
-							String id, dat, dev, sts, su = null;
-							String sql = "select * from hist";
-							Connection con = Dbcon.getCon();
-							Statement st = con.createStatement();
-							ResultSet rs = st.executeQuery(sql);
-							while (rs.next()) {
-								id = rs.getString("id");
-								dat = rs.getString("dat");
-								dev = rs.getString("dev");
-								sts = rs.getString("status");
-								su = rs.getString("summary");
-						%>
-						<tr
-							style="border: solid 1px; font-size: 15px; color: white; font-family: monospace; font-weight: bold;">
-							<td style="height: 20px; text-align: center" width='10%'><%=id%></td>
-							<td style="text-align: center" width='10%'><%=dat%></td>
-							<td style="text-align: center;" width='22%'><%=dev%></td>
-							<td style="text-align: center;" width='12%'><%=sts%></td>
-							<td style="text-align: center;" width='12%'><%=su%></td>
-						</tr>
-						<%
-							}
-						%>
-					</table>
-
+					<h5 style="color: darkblue; margin-top: -210px; margin-left: 450px">
+						Welcome
+						<%=user%></h5>
 				</article>
 			</div>
 		</div>
@@ -142,16 +101,16 @@
 				<article class="span12">
 					<div class="row">
 						<nav class="span6">
-							<!--                                <ul>
-                                    <li><a href="index.html">home</a></li>
-                                    <li class="active"><a href="about.html">about us</a></li>
-                                    <li><a href="products.html">products</a></li>
-                                    <li><a href="services.html">services</a></li>
-                                    <li><a href="contact.html">contacts</a></li>
-                                </ul>-->
+							<!--                        <ul>
+                            <li><a href="index.html">home</a></li>
+                            <li class="active"><a href="about.html">about us</a></li>
+                            <li><a href="products.html">products</a></li>
+                            <li><a href="services.html">services</a></li>
+                            <li><a href="contact.html">contacts</a></li>
+                        </ul>-->
 						</nav>
 						<div class="span3 offset3">
-							<p>Company Name Here & copy; 2014 & bull;</p>
+							<!--                        <p>Company Name Here &copy; 2014 &bull; </p>-->
 						</div>
 					</div>
 				</article>

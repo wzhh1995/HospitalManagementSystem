@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title><%@include file="tabtitle.jsp"%></title>
+<title><%@include file="title.jsp"%></title>
 <meta charset="utf-8">
 <meta name="description" content="Your description">
 <meta name="keywords" content="Your keywords">

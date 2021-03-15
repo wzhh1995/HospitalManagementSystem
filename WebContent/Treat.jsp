@@ -1,13 +1,13 @@
-<%@page import="action.Dbcon"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="action.Dbcon"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.ResultSet"%>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Manager</title>
-<meta charset="utf-8">
 
+<head>
+<title>Rectify</title>
+<meta charset="utf-8">
 <meta name="description" content="Your description">
 <meta name="keywords" content="Your keywords">
 <meta name="author" content="Your name">
@@ -47,12 +47,9 @@
 									<div class="clearfix">
 										<div class="nav-collapse nav-collapse_">
 											<ul class="nav sf-menu clearfix">
-												<li><a href="ahome.jsp">Home</a></li>
-												<li><a href="approve.jsp">Recruit Doctor</a></li>
-												<li class="active"><a href="trace.jsp">Trace
-														History</a></li>
-												<li class="active"><a href="history1.jsp">Patient
-														Status</a></li>
+												<li class="active"><a href="thome.jsp">Home</a></li>
+												<li><a href="PatientsInbox.jsp">Patients Inbox</a></li>
+												<li><a href="pStatus.jsp">Patient Status</a></li>
 												<li><a href="index.jsp">Logout</a></li>
 											</ul>
 										</div>
@@ -72,61 +69,74 @@
 		</header>
 		<!--content-->
 		<div class="container padBot"
-			style="height: 800px; background-image: url('img/bgall2.jpg')">
-			<br>
-			<br>
+			style="height: 600px; background-image: url('img/bgall2.jpg')">
+			<br> <br>
+			<div class="row" style="margin-left: 20px">
+				<article class="span4" style="color: white;">
+					<h5>Actions</h5>
 
-			<div class="row">
-				<article class="span4" style="color: white; margin-left: 50px">
 					<ol class="list1">
-						<li class="active"><a style="font-size: 20px"
-							href="ahome.jsp">Home</a></li>
-						<li><a style="font-size: 20px" href="approve.jsp">Recruit
-								Doctor</a></li>
-						<li><a style="font-size: 20px" href="trace.jsp">Trace
-								History</a></li>
-						<li><a style="font-size: 20px" href="history1.jsp">PATIENT_STATUS</a></li>
-						<li><a style="font-size: 20px" href="index.jsp">Logout</a></li>
+						<li><a href="dhome.jsp">Home</a></li>
+						<li><a href="PatientsInbox.jsp">Patients Inbox</a></li>
+						<li><a href="pStatus.jsp">Patient Status</a></li>
+						<li><a href="index.jsp">Logout</a></li>
 					</ol>
 				</article>
-				<article class="span8 about-box" style="">
-					<h5 style="color: white; margin-top: -150px; margin-left: 475px">Trace History of Patients</h5>
 
-					<table style="margin-left: 260px; width: 800px;">
-						<tr
-							style="border: solid 1px; font-size: 20px; color: white; font-family: monospace; font-weight: bold;">
-							<td style="text-align: center; height: 40px">Id</td>
-							<td style="text-align: center;">Date</td>
-							<td style="text-align: center;">Triager</td>
-							<td style="text-align: center;">Action</td>
-							<td style="text-align: center;">Summary</td>
-						</tr>
-						<%
-							String id, dat, dev, sts, su = null;
-							String sql = "select * from hist";
-							Connection con = Dbcon.getCon();
-							Statement st = con.createStatement();
-							ResultSet rs = st.executeQuery(sql);
-							while (rs.next()) {
-								id = rs.getString("id");
-								dat = rs.getString("dat");
-								dev = rs.getString("dev");
-								sts = rs.getString("status");
-								su = rs.getString("summary");
-						%>
-						<tr
-							style="border: solid 1px; font-size: 15px; color: white; font-family: monospace; font-weight: bold;">
-							<td style="height: 20px; text-align: center" width='10%'><%=id%></td>
-							<td style="text-align: center" width='10%'><%=dat%></td>
-							<td style="text-align: center;" width='22%'><%=dev%></td>
-							<td style="text-align: center;" width='12%'><%=sts%></td>
-							<td style="text-align: center;" width='12%'><%=su%></td>
-						</tr>
-						<%
-							}
-						%>
-					</table>
+				<style>
+					label {
+						font-family: monospace;
+						color: white;
+						font-weight: 25px;
+					}
+				</style>
 
+				<%
+					String query = request.getQueryString();
+					String new1 = query.replace("%20", " ");
+					String am = null;
+					String ar[] = new1.split(",");
+					String id = ar[0];
+					String sumy = ar[1];
+					String dept = ar[2];
+				%>
+
+				<article class="span8 about-box"
+					style="margin-left: 450px; margin-top: -200px">
+					<h5 style="margin-left: -25px">Rectification Status</h5>
+
+					<form action="updatestatus" method="post">
+						<fieldset>
+							<div class="form-div-1">
+								<label>Patient ID</label> <input type="text" value="<%=id%>"
+									name="id"> <br>
+							</div>
+
+							<div class="form-div-1">
+								<label>Summary</label> <input type="text" value="<%=sumy%>"
+									name="sum"> <br>
+							</div>
+							<div class="form-div-2">
+								<label>Department</label> <input type="text" value="<%=dept%>"
+									name="product"> <br>
+							</div>
+							<div class="form-div-2">
+								<label>Solution</label> <input type="text"
+									style="widht: 200px; height: 100px" name="soluction"> <br>
+							</div>
+							<div class="form-div-3">
+								<label>Status</label> <select name="status"
+									style="margin-top: 0px;">
+									<option value="-1">Select Status</option>
+									<option value="Cured">Cured</option>
+									<option value="NotCured">Not Cured</option>
+									<option value="Pending">Pending</option>
+								</select><br>
+							</div>
+						</fieldset>
+						<input type="submit" value="" class="btn btn-primary btn2"
+							style="margin-left: 73px; width: 95px; background-image: url('img/sub.png')" />
+					</form>
 				</article>
 			</div>
 		</div>
@@ -151,7 +161,7 @@
                                 </ul>-->
 						</nav>
 						<div class="span3 offset3">
-							<p>Company Name Here & copy; 2014 & bull;</p>
+							<!--                                <p>Company Name Here &copy; 2014 &bull; </p>-->
 						</div>
 					</div>
 				</article>

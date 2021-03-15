@@ -84,7 +84,7 @@
 				<article class="span4" style="color: white;">
 					<h5></h5>
 
-					<ul class="list1" >
+					<ul class="list1">
 						<li><a style="font-size: 20px;" href="thome.jsp"></a></li>
 						<li><a style="font-size: 20px;" href="affix.jsp"></a></li>
 						<li><a style="font-size: 20px;" href="buganalyse.jsp"></a></li>
@@ -98,35 +98,35 @@
 					style="margin-left: 350px; margin-top: -200px">
 					<h5 style="margin-left: -30px">Appointment</h5>
 
-					<form action="appointment" method="post">
+					<form action="Appointment" method="post">
 						<fieldset>
 							<div class="form-div-1">
 								<input type="text" placeholder="Name" required="" name="pname">
 								<br>
 							</div>
 							<div class="form-div-2">
-								<input type="text" placeholder="Age" required=""
-									name="age"> <br>
+								<input type="text" placeholder="Age" required="" name="age" pattern="[0-9]+">
+								<br>
 							</div>
 							<div class="form-div-2">
-								<input type="text" placeholder="Gender" required="" name="gender">
-								<br>
+								<input type="text" placeholder="Gender" required=""
+									name="gender"> <br>
 							</div>
 							<div class="form-div-1">
 								<input type="text" placeholder="Condition Summary" required=""
 									name="sum"> <br>
 							</div>
 							<div class="form-div-1">
-								<input type="text" placeholder="Condition description" required=""
-									name="des"> <br>
+								<input type="text" placeholder="Condition description"
+									required="" name="des"> <br>
 							</div>
 
 							<div class="form-div-3">
-								<select name="platform" style="margin-top: 0px;">
+								<select name="department" style="margin-top: 0px;">
 									<option value="-1">Select Department</option>
-									<option value="Java and J2EE">Surgeon</option>
-									<option value="Dot net">Physician</option>
-									<option value="Android">Dentist</option>
+									<option value="Surgeon">Surgeon</option>
+									<option value="Physician">Physician</option>
+									<option value="Dentist">Dentist</option>
 								</select><br>
 							</div>
 							<div class="form-div-3">

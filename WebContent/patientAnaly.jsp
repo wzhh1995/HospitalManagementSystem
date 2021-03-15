@@ -1,14 +1,13 @@
+<%@page import="action.Dbcon"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
-<%@page import="action.Dbcon"%>
 <%@page import="java.sql.Connection"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<title>DISTRUBUTE-TASK</title>
+<title>PA</title>
 <meta charset="utf-8">
-
 <meta name="description" content="Your description">
 <meta name="keywords" content="Your keywords">
 <meta name="author" content="Your name">
@@ -34,6 +33,7 @@
 		$('.thumb-pad5 figure a').touchTouch();
 	});
 </script>
+
 </head>
 <body>
 	<div class="global">
@@ -70,11 +70,11 @@
 		</header>
 		<!--content-->
 		<div class="container padBot"
-			style="height: 400px; background-image: url('img/bgall2.jpg')">
+			style="height: 600px; background-image: url('img/bgall2.jpg')">
 			<br> <br>
-			<div class="row">
-				<article class="span4" style="color: white">
-					<h5 style="color: white;">Actions</h5>
+			<div class="row" style="margin-left: 20px">
+				<article class="span4" style="color: white;">
+					<h5>Actions</h5>
 					<ol class="list1">
 						<li class="active"><a style="font-size: 20px"
 							href="ahome.jsp">Home</a></li>
@@ -87,38 +87,67 @@
 						<li><a style="font-size: 20px" href="index.jsp">Logout</a></li>
 					</ol>
 				</article>
-				<article class="span8 about-box">
-					<h5 style="color: white; margin-top: 10px; margin-left: -80px">Task
-						Assigned based on Domain Selection</h5>
 
-					<br>
-					<form action="patientAnaly.jsp" method="post" style="margin-left: 80px">
-						<!--                <h1>FEATURE SELECTION </h1><br>-->
-						<select class="inputss" name="domain">
-							<option value="FS">FEATURE SELECTION</option>
+				<article class="span8 about-box"
+					style="margin-left: 350px; margin-top: -220px">
+					<h5 style="margin-left: 150px">Patient Analysis</h5>
+					<div style="height: 300px; overflow: auto">
+						<table style="width: 1000px;">
+							<tr
+								style="border: solid 1px; font-size: 20px; color: burlywood; font-family: monospace; font-weight: bold;">
+								<td style="text-align: center; height: 40px">BugId</td>
+								<td style="text-align: center; height: 40px">comp</td>
+								<td style="text-align: center;">Summary</td>
+								<td style="text-align: center;">Description</td>
+								<td style="text-align: center;">Platform</td>
+								<td style="text-align: center;">Product</td>
+								<td style="text-align: center;">Critical</td>
+								<td style="text-align: center;">Devloper</td>
+								<td style="text-align: center;">Action</td>
+								<td style="text-align: center;">date</td>
+								<td style="text-align: center;">Triage</td>
+							</tr>
+
 							<%
-								String department = null;
-								String sql = " SELECT dept FROM patients GROUP BY dept";
-								try {
-									Connection con = Dbcon.getCon();
-									Statement st = con.createStatement();
-									ResultSet rs = st.executeQuery(sql);
-									while (rs.next()) {
-										//id = rs.getString("id");
-										department = rs.getString("dept");
+								String domain = request.getParameter("domain");
+								String id, name, age, gender, summary, dec, imp, adate, action = null;
+								//String sql = "select * from bug where product='"+fs+"'";
+								String sql = "SELECT  * from patients where dept = '" + domain + "' ";
+								Connection con = Dbcon.getCon();
+								Statement st = con.createStatement();
+								ResultSet rs = st.executeQuery(sql);
+								while (rs.next()) {
+									id = rs.getString("id");
+									name = rs.getString("name");
+									age = rs.getString("age");
+									gender = rs.getString("gender");
+									summary = rs.getString("summ");
+									dec = rs.getString("des");
+									imp = rs.getString("imp");
+									adate = rs.getString("adate");
+									action = rs.getString("status");
 							%>
-							<option value="<%=department%>"><%=department%></option>
+							<tr
+								style="border: solid 1px; font-size: 15px; color: white; font-family: monospace; font-weight: bold;">
+								<td style="height: 20px; text-align: center"><%=id%></td>
+								<td style="height: 20px; text-align: center"><%=name%></td>
+								<td style="text-align: center" width='10%'><%=age%></td>
+								<td style="text-align: center;" width='12%'><%=gender%></td>
+								<td style="text-align: center;" width='-2%'><textarea
+										readonly><%=summary%></textarea></td>
+								<td style="text-align: center;" width='-2%'><textarea
+										readonly><%=dec%></textarea></td>
+								<td style="text-align: center;" width='12%'><%=imp%></td>
+								<td style="text-align: center;" width='12%'><%=action%></td>
+								<td style="text-align: center;" width='12%'><%=adate%></td>
+								<td style="text-align: center;"><a style="color: white"
+									href="assign_doc.jsp?<%=id%>,<%=summary%>,<%=domain%>">Assign</a></td>
+							</tr>
 							<%
 								}
-							} catch (Exception ex) {
-								ex.printStackTrace();
-							}
 							%>
-						</select><br> <br> <br> <input
-							style="margin-left: 50px; border-radius: 3px; width: 120px"
-							type="submit" value="SPLIT">
-					</form>
-
+						</table>
+					</div>
 				</article>
 			</div>
 		</div>
@@ -135,16 +164,16 @@
 					<div class="row">
 						<nav class="span6">
 							<!--                        <ul>
-                            <li class="active"><a href="thome.jsp">Home</a></li>
+                            <li><a href="thome.jsp">Home</a></li>
                             <li><a href="affix.jsp">Affix New Bug</a></li>
-                            <li><a href="buganalyse.jsp">Analyse Bug Report</a></li>
-                            <li><a href="feature1.jsp">Data Reduction FS</a></li>
+                            <li class="active"><a href="buganalyse.jsp">Analyse Bug Report</a></li>
+                            <li><a href="dred.jsp">Data Reduction FS</a></li>
                             <li><a href="ired.jsp">Data Reduction IS</a></li>
                             <li><a href="index.jsp">Logout</a></li>
                         </ul>-->
 						</nav>
 						<div class="span3 offset3">
-							<!--                        <p>Company Name Here & copy; 2014 &bull; </p>-->
+							<!--                        <p>Company Name Here &copy; 2014 &bull; </p>-->
 						</div>
 					</div>
 				</article>
